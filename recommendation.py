@@ -1,5 +1,11 @@
 # recommendations.py
-def run_recommendation(age, gender, liked_titles):
+import torch
+import torch.nn.functional as F
+from transformers import AutoTokenizer, AutoModel
+
+import pandas as pd
+def run_recommendation(age, sex, liked_titles):
+
     # 👉 여기 전체 로직을 그대로 붙여 넣고
     # 최종 추천 결과를 return 해주면 됨
      # 1차 후보군 생성: 좋아하는 콘텐츠 기반 (장르 기반 추천)
@@ -24,19 +30,7 @@ def run_recommendation(age, gender, liked_titles):
 
     print(result)
     
-    return final_result_df.to_dict(orient='records')  # 리스트 형태로 반환
-
-# 사용자 입력 테스팅
-def input_data():
-    age = int(input('나이?: '))
-    sex = input('성별? (M/F): ')
-    sex = sex.lower()
-    titles_to_recommend = []
-    while True:
-        title = input('좋아하는 컨텐츠 (공백 입력 시 종료): ')
-        if(not title): break
-        titles_to_recommend.append(title)
-    return age, sex, titles_to_recommend
+    return result.to_dict(orient='records')
 
 # 모든 텍스트 데이터를 하나의 필드로 결합
 def create_soup(row):
@@ -91,6 +85,7 @@ def preprocessing_contents_data(contents):
 
 # 장르 기반으로 추천 콘텐츠 리스트 결정
 def genre_based_recommended_contents(contents, embeddings, titles):
+    print("genre_based_recommeded_contents 함수 시작")
     # 인덱스를 title로 설정
     temp = contents.reset_index()
     title_index = pd.Series(temp.index, index=temp['title']).drop_duplicates()
