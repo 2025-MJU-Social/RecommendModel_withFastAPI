@@ -4,14 +4,11 @@ import torch.nn.functional as F
 from transformers import AutoTokenizer, AutoModel
 
 import pandas as pd
-def run_recommendation(age, sex, liked_titles):
+def run_recommendation(age, sex, liked_titles,contents,preprocessing_contents,embeddings,intentions,experiences):
 
     # 👉 여기 전체 로직을 그대로 붙여 넣고
     # 최종 추천 결과를 return 해주면 됨
      # 1차 후보군 생성: 좋아하는 콘텐츠 기반 (장르 기반 추천)
-    contents = get_contents_data()
-    preprocessing_contents = preprocessing_contents_data(contents)
-    embeddings = get_embeddings(preprocessing_contents)
     contents_based_recommendations = genre_based_recommended_contents(contents, embeddings, liked_titles)
 
     # 2차 후보군 생성: 사용자 통계 기반 (사용자의 연령/성별 기반 추천)
@@ -21,8 +18,7 @@ def run_recommendation(age, sex, liked_titles):
     recommendations = merge_recommended_contents(preprocessing_contents, contents_based_recommendations, user_based_recommendations)
 
     # 사용자 정보에 따라 ott 별로 가중치 부여
-    intentions = get_ott_intension_data()
-    experiences = get_ott_experience_data()
+
     score_dict = calculate_ott_score(age, sex, intentions, experiences)
 
     # 추천된 컨텐츠를 기반한 최종적인 ott 점수 계산
