@@ -11,6 +11,10 @@ def run_recommendation(age, sex, liked_titles,contents,preprocessing_contents,em
      # 1차 후보군 생성: 좋아하는 콘텐츠 기반 (장르 기반 추천)
     contents_based_recommendations = genre_based_recommended_contents(contents, embeddings, liked_titles)
 
+    # str 타입이면 빈 DataFrame으로 변환 (이중 안전장치)
+    if isinstance(contents_based_recommendations, str):
+        contents_based_recommendations = pd.DataFrame(columns=['title', 'similarity score', 'weight'])
+
     # 2차 후보군 생성: 사용자 통계 기반 (사용자의 연령/성별 기반 추천)
     user_based_recommendations = user_based_recommended_contents(age, sex)
     
@@ -24,7 +28,6 @@ def run_recommendation(age, sex, liked_titles,contents,preprocessing_contents,em
     # 추천된 컨텐츠를 기반한 최종적인 ott 점수 계산
     result = get_ott_recommendation_ranking(recommendations, score_dict)
 
-    print(result)
     
     return result.to_dict(orient='records')
 
@@ -90,7 +93,8 @@ def genre_based_recommended_contents(contents, embeddings, titles):
     valid_indices = [title_index[title] for title in titles if title in title_index]
 
     if not valid_indices:
-        return "입력된 제목 중 데이터셋에 존재하는 제목이 없습니다."
+        # 빈 DataFrame 반환 (columns는 아래와 동일하게 맞춤)
+        return pd.DataFrame(columns=['title', 'similarity score', 'weight'])
 
     # 선택한 제목들의 임베딩 벡터 추출
     selected_embeddings = embeddings[valid_indices]
