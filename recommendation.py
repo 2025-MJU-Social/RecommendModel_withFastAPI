@@ -299,6 +299,11 @@ def calculate_ott_score(age, sex, intentions, experiences):
     for k in score_dict:
         score_dict[k] = round((score_dict[k] - min_score) / (max_score - min_score) + 1, 2)
 
+    # 넷플릭스만 패널티 적용 (가중치 감소)
+    penalty_factor = 0.6  # 원래 점수의 60%만 사용
+    if 'Netflix' in score_dict:
+        score_dict['Netflix'] = round(score_dict['Netflix'] * penalty_factor, 2)
+
     return score_dict
 
 # 콘텐츠를 제공하는 OTT 플랫폼을 기반으로 최종 OTT 점수를 계산하여 OTT 추천 순위 부여
