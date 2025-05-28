@@ -6,18 +6,12 @@ from typing import List, Optional
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, field_validator
 import pandas as pd
 from fastapi.middleware.cors import CORSMiddleware
 
-from recommendation import (
-    run_recommendation, get_contents_data, preprocessing_contents_data,
-    get_embeddings, get_ott_intension_data, get_ott_experience_data
-)
-from ott_recommendation import (
-    load_data, add_genre_embeddings, load_language_model, 
-    ott_recommendation_model, prepare_ott_recommendation_data
-)
+from recommendation import *
+from ott_recommendation import *
 
 # 로깅 설정
 logging.basicConfig(level=logging.INFO)
@@ -119,7 +113,6 @@ def age_group_to_age(age_group: str) -> int:
         "20대": 25,
         "30대": 35,
         "40대": 45,
-        "50대": 55,
         "50대 이상": 55
     }
     return age_mapping.get(age_group, 25)  # 기본값: 25세
@@ -134,20 +127,20 @@ class RecommendRequest(BaseModel):
     gender: str
     liked_titles: List[str]
     
-    @validator('age_group')
+    @field_validator('age_group')
     def validate_age_group(cls, v):
         valid_ages = ['10대', '20대', '30대', '40대', '50대', '50대 이상']
         if v not in valid_ages:
             raise ValueError(f'연령대는 {valid_ages} 중 하나여야 합니다')
         return v
     
-    @validator('gender')
+    @field_validator('gender')
     def validate_gender(cls, v):
         if v.lower() not in ['m', 'f']:
             raise ValueError("성별은 'm' 또는 'f'여야 합니다")
         return v.lower()
     
-    @validator('liked_titles')
+    @field_validator('liked_titles')
     def validate_liked_titles(cls, v):
         if not v:
             raise ValueError('최소 하나의 좋아하는 제목을 입력해주세요')
@@ -161,26 +154,26 @@ class OttRecommendationRequest(BaseModel):
     weekly_hours: float
     budget: float
     
-    @validator('age_group')
+    @field_validator('age_group')
     def validate_age_group(cls, v):
         valid_ages = ['10대', '20대', '30대', '40대', '50대', '50대 이상']
         if v not in valid_ages:
             raise ValueError(f'연령대는 {valid_ages} 중 하나여야 합니다')
         return v
     
-    @validator('gender')
+    @field_validator('gender')
     def validate_gender(cls, v):
         if v.lower() not in ['m', 'f']:
             raise ValueError("성별은 'm' 또는 'f'여야 합니다")
         return v.lower()
     
-    @validator('weekly_hours')
+    @field_validator('weekly_hours')
     def validate_weekly_hours(cls, v):
         if v <= 0:
             raise ValueError('주간 시청 시간은 0보다 커야 합니다')
         return v
     
-    @validator('budget')
+    @field_validator('budget')
     def validate_budget(cls, v):
         if v <= 0:
             raise ValueError('예산은 0보다 커야 합니다')
@@ -286,10 +279,11 @@ def ott_recommend(req: OttRecommendationRequest):
 
         # 구독 플랜 정제
         cleaned_plan = {}
-        for key, (plan_name, price) in plan.items():
+        for key, v in plan.items():
             cleaned_plan[key] = {
-                "plan_name": plan_name,
-                "price": int(price)
+                "plan_name": v["plan_name"],
+                "price": int(v["price"]),
+                "cover_count": int(v["cover_count"])
             }
 
         return {
