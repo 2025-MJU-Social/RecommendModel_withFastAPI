@@ -298,9 +298,40 @@ def ott_recommendation_model(
         plan[p] = (cheapest['요금제'], cheapest['월 구독료(원)'])
         total_cost += int(cheapest['월 구독료(원)'])
     
+    # === 예산 초과 OTT만 포함된 콘텐츠 제외 및 대체 추천 ===
+    over_budget_ott = set()
     if total_cost > budget:
-        logger.warning(f"예산({int(budget)}원) 초과: 구독비 {total_cost}원")
-    
+        running_cost = 0
+        for p, (plan_name, price) in plan.items():
+            running_cost += int(price)
+            if running_cost > budget:
+                over_budget_ott.add(p)
+
+    def is_only_on_over_budget_ott(platforms, over_budget_ott, all_ott):
+        platform_set = set([pp.strip() for pp in str(platforms).split(',') if pp.strip()])
+        # 예산 내 OTT가 하나라도 있으면 False
+        if platform_set - over_budget_ott:
+            return False
+        # 예산 초과 OTT만 있으면 True
+        return bool(platform_set & over_budget_ott)
+
+    if over_budget_ott:
+        filtered = []
+        for _, row in sel_df.iterrows():
+            if not is_only_on_over_budget_ott(row['platform'], over_budget_ott, set(plan.keys())):
+                filtered.append(row)
+        # 대체 콘텐츠 추가 (예산 내 OTT에 포함된 것 중에서)
+        if len(filtered) < desired_min:
+            for _, row in candidates.iterrows():
+                if not is_only_on_over_budget_ott(row['platform'], over_budget_ott, set(plan.keys())):
+                    if row['title'] not in [r['title'] for r in filtered]:
+                        filtered.append(row)
+                    if len(filtered) >= desired_min:
+                        break
+        sel_df = pd.DataFrame(filtered)
+
+    # =========================
+
     logger.info("추천 분석 완료")
     return sel_df, plan, float(total_hours), int(total_cost)
 
