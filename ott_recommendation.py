@@ -211,6 +211,31 @@ def add_genre_embeddings(contents, model):
     logger.info("콘텐츠 데이터 전처리 완료")
     return contents
 
+def normalize_platform_name(name):
+    # 한글/영문, 대소문자, 특수문자, 공백 등 최대한 유연하게 변환
+    return (
+        str(name)
+        .strip()
+        .lower()
+        .replace(" ", "")
+        .replace("+", "plus")
+        .replace("-", "")
+        .replace("_", "")
+        .replace("tv", "")
+        .replace("(주)", "")
+        .replace("쿠팡플레이", "coupangplay")
+        .replace("왓챠", "watcha")
+        .replace("웨이브", "wavve")
+        .replace("티빙", "tving")
+        .replace("디즈니플러스", "disneyplus")
+        .replace("애플tv", "appletv")
+        .replace("넷플릭스", "netflix")
+        .replace("유플러스", "uplusmobile")
+        .replace("u+모바일tv", "uplusmobile")
+        .replace("uplus", "uplusmobile")
+        .replace(".", "")
+    )
+
 def optimize_ott_subscription(sel_df, prices):
     """
     Set Cover Problem을 해결하여 최소 비용으로 모든 콘텐츠를 커버하는 플랫폼 조합 찾기
@@ -343,75 +368,74 @@ def select_contents(candidates, max_hours, desired_min, desired_max):
     sel_df = pd.DataFrame(selected)
     return sel_df, total_hours
 
-def format_final_result(sel_df, final_plan, total_hours, total_cost):
-    # 각 플랫폼별 커버 콘텐츠 개수 계산
-    platform_cover_count = {}
-    for platform in final_plan:
-        count = 0
-        for _, row in sel_df.iterrows():
-            if pd.notna(row.get('platform')):
-                content_platforms = [p.strip() for p in str(row['platform']).split(',')]
-                if platform in content_platforms:
-                    count += 1
-        platform_cover_count[platform] = count
-    # 최종 구독 플랜에 cover_count 추가
-    final_plan_with_cover = {}
-    for k, v in final_plan.items():
-        final_plan_with_cover[k] = {
-            'plan_name': v[0],
-            'price': int(v[1]),
-            'cover_count': platform_cover_count.get(k, 0)
-        }
-    return sel_df, final_plan_with_cover, float(total_hours), int(total_cost)
-
-def handle_budget_excess(sel_df, candidates, optimized_plan, budget, desired_min):
-    logger.info(f"최적화된 비용이 예산({budget}원)을 초과합니다. 예산 내 콘텐츠로 재추천...")
-    budget_platforms = set()
-    running_cost = 0
-    platform_efficiency = []
-    for platform, (plan_name, price) in optimized_plan.items():
-        covered_count = 0
-        for _, row in sel_df.iterrows():
-            if pd.notna(row.get('platform')):
-                content_platforms = [p.strip() for p in str(row['platform']).split(',')]
-                if platform in content_platforms:
-                    covered_count += 1
-        if covered_count > 0:
-            efficiency = covered_count / int(price)
-            platform_efficiency.append((platform, int(price), efficiency, covered_count))
-    platform_efficiency.sort(key=lambda x: x[2], reverse=True)
-    for platform, price, efficiency, count in platform_efficiency:
-        if running_cost + price <= budget:
-            budget_platforms.add(platform)
-            running_cost += price
-    if budget_platforms:
-        filtered_content = []
-        for _, row in sel_df.iterrows():
-            if pd.notna(row.get('platform')):
-                content_platforms = set([p.strip() for p in str(row['platform']).split(',')])
-                if content_platforms & budget_platforms:
-                    filtered_content.append(row)
-        if len(filtered_content) < desired_min:
-            for _, row in candidates.iterrows():
-                if pd.notna(row.get('platform')):
-                    content_platforms = set([p.strip() for p in str(row['platform']).split(',')])
-                    if content_platforms & budget_platforms:
-                        if row['title'] not in [r['title'] for r in filtered_content]:
-                            filtered_content.append(row)
-                        if len(filtered_content) >= desired_min:
-                            break
-        if filtered_content:
-            sel_df = pd.DataFrame(filtered_content)
-            final_plan = {p: optimized_plan[p] for p in budget_platforms}
-            final_cost = sum(int(plan[1]) for plan in final_plan.values())
-            total_hours = sum(row.get('watch_hours', 1.0) for _, row in sel_df.iterrows())
-            return sel_df, final_plan, total_hours
-        else:
-            logger.warning("예산 내에서 추천할 콘텐츠가 없습니다.")
-            return None, None, None
-    else:
-        logger.warning("예산이 너무 적어 어떤 플랫폼도 구독할 수 없습니다.")
-        return None, None, None
+def get_ott_plan_candidates(sel_df, prices, budget):
+    """
+    1. 추천 콘텐츠를 최대한 커버하는 ott+요금제 조합을 greedy하게 선정(중복 콘텐츠는 한 번만 커버)
+    2. 선정된 ott 리스트에 한해서, 각 ott별로 예산 내 모든 요금제를 리스트로 추가(cover_count는 0 이상)
+    즉, 최종적으로 선정된 ott만, 그 ott의 예산 내 모든 요금제를 보여준다.
+    """
+    # 1. greedy로 ott+요금제 조합 선정 (실제로 새롭게 커버할 수 있는 콘텐츠가 1개 이상인 경우만)
+    platforms = set()
+    for _, row in sel_df.iterrows():
+        if pd.notna(row.get('platform')):
+            for p in str(row['platform']).split(','):
+    # 후보 생성 (cover_set 포함)
+    raw_candidates = []
+    for platform in platforms:
+        norm_platform = normalize_platform_name(platform)
+        for _, plan_row in prices.iterrows():
+            price_name = str(plan_row['서비스명'])
+            if normalize_platform_name(price_name) == norm_platform:
+                price = int(plan_row['월 구독료(원)'])
+                if price <= budget:
+                    plan_name = plan_row['요금제']
+                    # 이 요금제로 커버 가능한 콘텐츠 set
+                    cover_set = set()
+                    for _, row in sel_df.iterrows():
+                        if pd.notna(row.get('platform')):
+                            content_platforms = [p.strip() for p in str(row['platform']).split(',')]
+                            if platform in content_platforms:
+                                cover_set.add(row['title'])
+                    raw_candidates.append({
+                        'platform': platform,
+                        'plan_name': plan_name,
+                        'price': price,
+                        'cover_set': cover_set
+                    })
+    # greedy로 ott 선정
+    used_contents = set()
+    selected_ott = set()
+    for cand in sorted(raw_candidates, key=lambda x: len(x['cover_set']), reverse=True):
+        new_covers = cand['cover_set'] - used_contents
+        if len(new_covers) > 0:
+            selected_ott.add(cand['platform'])
+            used_contents.update(new_covers)
+    # 2. 선정된 ott에 한해서, 예산 내 모든 요금제 리스트업(cover_count=실제로 커버 가능한 콘텐츠 수)
+    ott_plans = []
+    for platform in selected_ott:
+        norm_platform = normalize_platform_name(platform)
+        for _, plan_row in prices.iterrows():
+            price_name = str(plan_row['서비스명'])
+            if normalize_platform_name(price_name) == norm_platform:
+                price = int(plan_row['월 구독료(원)'])
+                if price <= budget:
+                    plan_name = plan_row['요금제']
+                    # 이 요금제로 커버 가능한 콘텐츠 set
+                    cover_set = set()
+                    for _, row in sel_df.iterrows():
+                        if pd.notna(row.get('platform')):
+                            content_platforms = [p.strip() for p in str(row['platform']).split(',')]
+                            if platform in content_platforms:
+                                cover_set.add(row['title'])
+                    ott_plans.append({
+                        'platform': platform,
+                        'plan_name': plan_name,
+                        'price': price,
+                        'cover_count': len(cover_set)
+                    })
+    # cover_count 내림차순 정렬
+    ott_plans = sorted(ott_plans, key=lambda x: x['cover_count'], reverse=True)
+    return ott_plans
 
 def ott_recommendation_model(
         contents, 
@@ -441,28 +465,20 @@ def ott_recommendation_model(
     # 3. 콘텐츠 선택
     sel_df, total_hours = select_contents(candidates, max_hours, desired_min, desired_max)
 
-    # 4. 플랫폼 최적화
-    optimized_plan, optimized_cost = optimize_ott_subscription(sel_df, prices)
+    # 4. OTT+요금제 후보 생성 및 정렬
+    ott_plan_candidates = get_ott_plan_candidates(sel_df, prices, budget)
+    # 반환값 포맷 맞추기
+    final_plan_with_cover = {}
+    for idx, plan in enumerate(ott_plan_candidates):
+        key = f"{plan['platform']}|{plan['plan_name']}"
+        final_plan_with_cover[key] = {
+            'platform': plan['platform'],
+            'plan_name': plan['plan_name'],
+            'price': plan['price'],
+            'cover_count': plan['cover_count']
+        }
 
-    # 5. 예산 초과 처리 
-    if optimized_cost > budget:
-        result = handle_budget_excess(sel_df, candidates, optimized_plan, budget, desired_min)
-        if result[0] is None:
-            return pd.DataFrame(), {}, 0, 0
-        sel_df, final_plan, total_hours = result
-        final_cost = sum(int(plan[1]) for plan in final_plan.values())
-    else:
-        final_plan = optimized_plan
-        final_cost = optimized_cost
-
-    print(final_cost, budget)
-    if final_cost > budget:
-        warning_msg = "예산을 초과했습니다! 한 달에 하나씩 결제하는 것도 고려하세요."
-        logger.warning(f"⚠️ {warning_msg}")
-        global ment
-        ment.append(warning_msg)
-
-    # 6. 반환값 정리
+    # 5. 반환값 정리
     # 추천 콘텐츠 정보 전체 로그 출력 (플랫폼, 장르, 시청시간, 점수, 순위만)
     logger.info("최종 추천 콘텐츠 리스트:")
     # 점수 내림차순 정렬
@@ -488,10 +504,10 @@ def ott_recommendation_model(
     # 최종 out 결과 전체 로그
     logger.info("=== 모델 최종 반환값 ===")
     logger.info(f"추천 콘텐츠 개수: {len(sel_df)}")
-    logger.info(f"최종 구독 플랜: {final_plan}")
-    logger.info(f"총 예상 시청시간: {total_hours}h, 총 구독비: {final_cost}원")
+    logger.info(f"최종 구독 플랜: {final_plan_with_cover}")
+    logger.info(f"총 예상 시청시간: {total_hours}h, 총 구독비: 0원")
 
-    return format_final_result(sel_df, final_plan, total_hours, final_cost)
+    return sel_df, final_plan_with_cover, total_hours, 0
 
 def prepare_ott_recommendation_data():
     """
