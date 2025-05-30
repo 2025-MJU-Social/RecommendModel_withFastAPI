@@ -65,6 +65,18 @@ def estimate_runtime_hours(row):
             pass
     return 1.0
 
+def calculate_time_efficiency_score(watch_hours, weekly_budget=8):
+    """주간 시청 예산 기준 시간 효율성 점수"""
+    if watch_hours <= weekly_budget:
+        # 8시간 이내: 높은 점수 (0.8~1.0)
+        return 1.0 - (watch_hours / weekly_budget) * 0.2  
+        # 1시간: 0.975, 4시간: 0.9, 8시간: 0.8
+    else:
+        # 8시간 초과: 급격히 감소
+        excess_ratio = (watch_hours - weekly_budget) / weekly_budget
+        return max(0.1, 0.8 * (1 / (1 + excess_ratio)))
+        # 12시간: 0.4, 16시간: 0.27, 20시간: 0.2
+
 def load_language_model():
     """언어 모델을 로드하는 함수"""
     logger.info("언어 모델 로드 중...")
@@ -134,11 +146,8 @@ def precompute_content_embeddings(contents):
     
     logger.info(f"콘텐츠 임베딩 사전 계산 완료: {len(CONTENT_EMBEDDINGS_CACHE)}개 조합")
 
-def calculate_age_similarity(user_age_group: str, content_age_group: str) -> float:
-    """연령대 유사도 계산"""
-    if user_age_group == content_age_group:
-        return 1.0
-    
+def calculate_age_distance_penalty(user_age_group: str, content_age_group: str) -> float:
+    """연령대 거리 기반 페널티 계산"""
     age_order = ["10대", "20대", "30대", "40대", "50대", "50대 이상"]
     
     try:
@@ -147,17 +156,27 @@ def calculate_age_similarity(user_age_group: str, content_age_group: str) -> flo
         
         # 거리 기반 유사도 (인접할수록 높은 점수)
         distance = abs(user_idx - content_idx)
-        similarity = max(0, 1 - (distance * 0.2))  # 한 단계당 0.2씩 감소
-        return similarity
+        penalty = max(0, 1 - (distance * 0.2))  # 한 단계당 0.2씩 감소
+        return penalty
     except ValueError:
         return 0.0
 
-def calculate_gender_similarity(user_gender: str, content_gender: str) -> float:
-    """성별 유사도 계산"""
-    if user_gender.lower() == content_gender.lower():
-        return 1.0
+def calculate_age_similarity(user_age_group: str, content_age_group: str, rank: int) -> float:
+    """랭킹을 고려한 연령대 유사도 계산"""
+    if user_age_group == content_age_group:
+        # 타겟 연령과 일치할 때는 랭킹 그대로 반영
+        return 1.0 / rank
     else:
-        return 0.3  # 다른 성별이어도 어느 정도 점수 부여
+        # 타겟 연령과 다를 때는 랭킹에 거리 기반 페널티 적용
+        age_penalty = calculate_age_distance_penalty(user_age_group, content_age_group)
+        return (1.0 / rank) * age_penalty
+
+def calculate_gender_similarity(user_gender: str, content_gender: str, rank: int) -> float:
+    """랭킹을 고려한 성별 유사도 계산"""
+    if user_gender.lower() == content_gender.lower():
+        return 1.0 / rank
+    else:
+        return (1.0 / rank) * 0.3  # 성별 불일치 페널티
 
 def calculate_genre_similarity_optimized(user_genres: List[str], content_genres: List[str]) -> float:
     """
@@ -319,7 +338,7 @@ def filter_candidates(contents, base_genres, desired_min):
         candidates = contents.copy()
     return candidates
 
-def compute_scores(candidates, detail_genres, age_group, gender):
+def compute_scores(candidates, detail_genres, age_group, gender, weekly_hours):
     # 장르 유사도
     genre_scores = [
         calculate_genre_similarity_optimized(detail_genres, row['genre_detail_list'])
@@ -328,17 +347,21 @@ def compute_scores(candidates, detail_genres, age_group, gender):
     candidates['genre_similarity'] = genre_scores
     # 연령/성별 유사도
     age_scores = [
-        calculate_age_similarity(age_group, row.get('age_group', ''))
+        calculate_age_similarity(age_group, row.get('age_group', ''), row.get('rank', 1))
         for _, row in candidates.iterrows()
     ]
     gender_scores = [
-        calculate_gender_similarity(gender, row.get('gender', ''))
+        calculate_gender_similarity(gender, row.get('gender', ''), row.get('rank', 1))
         for _, row in candidates.iterrows()
     ]
     candidates['age_similarity'] = age_scores
     candidates['gender_similarity'] = gender_scores
+
     # 러닝타임
     candidates['watch_hours'] = candidates.apply(estimate_runtime_hours, axis=1)
+    candidates['time_efficiency'] = candidates['watch_hours'].apply(
+        lambda x: calculate_time_efficiency_score(x, weekly_hours)
+    )    
 
     # 랭킹 점수 추가 (순위가 높을수록 점수 높게)
     if 'rank' in candidates.columns:
@@ -348,14 +371,14 @@ def compute_scores(candidates, detail_genres, age_group, gender):
     else:
         candidates['rank_score'] = 0.5  # rank 정보가 없으면 중간값
     
-    # 종합 점수 (가중치 재조정)
+    # 종합 점수
     candidates['combined_score'] = (
-        0.35 * candidates['genre_similarity'] +    # 장르 유사도 
+        0.35 * candidates['genre_similarity'] +     # 장르 유사도 
         0.15 * candidates['gender_similarity'] +    # 성별 유사도
-        0.15 * (candidates['score'] / 100) +       # 콘텐츠 점수
-        0.15 * candidates['rank_score'] +          # 랭킹 점수 추가
-        0.1 * candidates['age_similarity'] +      # 연령 유사도 
-        0.1 * (1 / (1 + candidates['watch_hours']))  # 시간 효율성
+        0.15 * (candidates['score'] / 100) +        # 콘텐츠 점수
+        0.15 * candidates['rank_score'] +           # 랭킹 점수 추가
+        0.1 * candidates['age_similarity'] +        # 연령 유사도 
+        0.1 * candidates['time_efficiency']         # 시간 효율성
     )
     return candidates
 
@@ -416,6 +439,164 @@ def select_contents(candidates, max_hours, desired_min, desired_max):
     logger.info(f"중복 제거된 콘텐츠 수: {len(selected_contents)}")
 
     return sel_df, total_hours
+
+def select_contents_with_dp(candidates, max_hours, desired_min, desired_max):
+    """Dynamic Programming을 활용한 최적 콘텐츠 선택"""
+    candidates = candidates.sort_values('combined_score', ascending=False)
+    candidates = candidates.drop_duplicates(subset=['title'])
+    
+    # 콘텐츠 정보 추출
+    contents_info = []
+    for idx, row in candidates.head(desired_max * 2).iterrows():  # 더 많은 후보 고려
+        title = row['title']
+        platforms = []
+        if pd.notna(row.get('platform')):
+            platforms = [p.strip() for p in str(row['platform']).split(',') if p.strip()]
+        
+        watch_hours = row.get('watch_hours', 0)
+        score = row.get('combined_score', 0)
+        
+        contents_info.append({
+            'title': title,
+            'platforms': platforms,
+            'watch_hours': watch_hours,
+            'score': score,
+            'row_data': row
+        })
+    
+    # Dynamic Programming 최적화
+    selected_contents, platform_hours = optimize_content_assignment(
+        contents_info, max_hours, desired_max
+    )
+    
+    # 최소 개수 보장 로직
+    if len(selected_contents) < desired_min:
+        # DP 실패 시 상위 콘텐츠로 최소 개수 보장
+        top_contents = candidates.head(desired_min)
+        selected_contents = []
+        total_hours = 0
+        for _, row in top_contents.iterrows():
+            selected_contents.append(row)
+            total_hours += row.get('watch_hours', 0)
+        
+        sel_df = pd.DataFrame(selected_contents)
+        logger.info(f"DP 실패 - 최소 개수 보장으로 {len(selected_contents)}개 선택")
+        return sel_df, total_hours
+    
+    # 결과 정리
+    sel_df = pd.DataFrame([content['row_data'] for content in selected_contents])
+    total_hours = sum(content['watch_hours'] for content in selected_contents)
+    
+    logger.info(f"DP 최적화 완료 - 플랫폼별 시청시간 분배: {platform_hours}")
+    logger.info(f"최적 선택된 콘텐츠 수: {len(selected_contents)}")
+    
+    return sel_df, total_hours
+
+def optimize_content_assignment(contents_info, max_hours, max_count):
+    """
+    Dynamic Programming을 사용한 콘텐츠 할당 최적화
+    상태: dp[i][t1][t2] = i번째까지 콘텐츠 고려, 플랫폼1에 t1시간, 플랫폼2에 t2시간 할당했을 때의 최대 점수
+    """
+    if not contents_info:
+        return [], {}
+    
+    # 시간을 정수로 변환 (소수점 처리)
+    time_scale = 10  # 0.1시간 = 1unit
+    max_time_units = int(max_hours * time_scale)
+    
+    # 모든 플랫폼 추출
+    all_platforms = set()
+    for content in contents_info:
+        all_platforms.update(content['platforms'])
+    
+    platforms_list = list(all_platforms)[:2]  # 최대 2개 플랫폼만 고려 (복잡도 관리)
+    
+    if len(platforms_list) == 0:
+        return [], {}
+    elif len(platforms_list) == 1:
+        # 단일 플랫폼인 경우 간단한 배낭 문제
+        return solve_single_platform_knapsack(contents_info, platforms_list[0], max_hours, max_count)
+    
+    # 2개 플랫폼 DP
+    platform1, platform2 = platforms_list[0], platforms_list[1]
+    
+    # dp[i][t1][t2] = (최대 점수, 선택된 콘텐츠 리스트)
+    # 메모리 최적화를 위해 딕셔너리 사용
+    memo = {}
+    
+    def dp(idx, time1, time2, selected_count):
+        if idx >= len(contents_info) or selected_count >= max_count:
+            return 0, []
+        
+        state = (idx, time1, time2, selected_count)
+        if state in memo:
+            return memo[state]
+        
+        content = contents_info[idx]
+        platforms = content['platforms']
+        watch_time_units = int(content['watch_hours'] * time_scale)
+        score = content['score']
+        
+        # 선택하지 않는 경우
+        best_score, best_selection = dp(idx + 1, time1, time2, selected_count)
+        
+        # 각 플랫폼에 할당해보기
+        for platform in platforms:
+            if platform == platform1 and time1 + watch_time_units <= max_time_units:
+                next_score, next_selection = dp(idx + 1, time1 + watch_time_units, time2, selected_count + 1)
+                total_score = score + next_score
+                if total_score > best_score:
+                    best_score = total_score
+                    best_selection = [content] + next_selection
+                    
+            elif platform == platform2 and time2 + watch_time_units <= max_time_units:
+                next_score, next_selection = dp(idx + 1, time1, time2 + watch_time_units, selected_count + 1)
+                total_score = score + next_score
+                if total_score > best_score:
+                    best_score = total_score
+                    best_selection = [content] + next_selection
+        
+        memo[state] = (best_score, best_selection)
+        return best_score, best_selection
+    
+    # DP 실행
+    final_score, selected_contents = dp(0, 0, 0, 0)
+    
+    # 플랫폼별 시간 계산
+    platform_hours = {platform1: 0, platform2: 0}
+    for content in selected_contents:
+        # 실제 할당된 플랫폼 추적 (간단히 첫 번째 가능한 플랫폼으로 가정)
+        for platform in content['platforms']:
+            if platform in platform_hours:
+                platform_hours[platform] += content['watch_hours']
+                break
+    
+    logger.info(f"DP 최적화 결과 - 총 점수: {final_score:.3f}, 선택된 콘텐츠: {len(selected_contents)}개")
+    
+    return selected_contents, platform_hours
+
+def solve_single_platform_knapsack(contents_info, platform, max_hours, max_count):
+    """단일 플랫폼에 대한 배낭 문제 해결"""
+    # 해당 플랫폼에서 볼 수 있는 콘텐츠만 필터링
+    valid_contents = []
+    for content in contents_info:
+        if platform in content['platforms']:
+            valid_contents.append(content)
+    
+    # 간단한 Greedy 선택 (점수/시간 비율 기준)
+    valid_contents.sort(key=lambda x: x['score'] / max(x['watch_hours'], 0.1), reverse=True)
+    
+    selected = []
+    total_hours = 0
+    
+    for content in valid_contents:
+        if (total_hours + content['watch_hours'] <= max_hours and 
+            len(selected) < max_count):
+            selected.append(content)
+            total_hours += content['watch_hours']
+    
+    platform_hours = {platform: total_hours}
+    return selected, platform_hours
 
 def get_ott_plan_candidates(sel_df, prices, budget):
     """
@@ -498,7 +679,7 @@ def ott_recommendation_model(
     """
     최적화된 추천 시스템 함수 (사전 계산된 임베딩 사용 + 비용 최적화)
     """
-    max_hours = weekly_hours * 4    # 월간 시청 시간
+    max_hours = weekly_hours * 4 * 1.5    # 월간 시청 시간 (1.5배까지 허용)
     desired_min, desired_max = 3, 8 # 추천 콘텐츠 개수
     logger.info(f"사용자의 월간 시청 시간: {max_hours:.1f}시간, 추천 콘텐츠 개수: {desired_min}~{desired_max}개")
     logger.info("추천 분석 시작...")
@@ -510,10 +691,10 @@ def ott_recommendation_model(
         return pd.DataFrame(), {}, 0, 0
 
     # 2. 점수 계산
-    candidates = compute_scores(candidates, detail_genres, age_group, gender)
+    candidates = compute_scores(candidates, detail_genres, age_group, gender, weekly_hours)
 
     # 3. 콘텐츠 선택
-    sel_df, total_hours = select_contents(candidates, max_hours, desired_min, desired_max)
+    sel_df, total_hours = select_contents_with_dp(candidates, max_hours, desired_min, desired_max)
 
     # 4. OTT+요금제 후보 생성 및 정렬
     ott_plan_candidates = get_ott_plan_candidates(sel_df, prices, budget)
