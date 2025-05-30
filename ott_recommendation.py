@@ -339,33 +339,82 @@ def compute_scores(candidates, detail_genres, age_group, gender):
     candidates['gender_similarity'] = gender_scores
     # 러닝타임
     candidates['watch_hours'] = candidates.apply(estimate_runtime_hours, axis=1)
-    # 종합 점수
+
+    # 랭킹 점수 추가 (순위가 높을수록 점수 높게)
+    if 'rank' in candidates.columns:
+        # rank가 1에 가까울수록 높은 점수 (역순 정규화)
+        max_rank = candidates['rank'].max()
+        candidates['rank_score'] = (max_rank - candidates['rank'] + 1) / max_rank
+    else:
+        candidates['rank_score'] = 0.5  # rank 정보가 없으면 중간값
+    
+    # 종합 점수 (가중치 재조정)
     candidates['combined_score'] = (
-        0.4 * candidates['genre_similarity'] +
-        0.2 * candidates['age_similarity'] +
-        0.1 * candidates['gender_similarity'] +
-        0.2 * (candidates['score'] / 100) +
-        0.1 * (1 / (1 + candidates['watch_hours']))
+        0.35 * candidates['genre_similarity'] +    # 장르 유사도 
+        0.15 * candidates['gender_similarity'] +    # 성별 유사도
+        0.15 * (candidates['score'] / 100) +       # 콘텐츠 점수
+        0.15 * candidates['rank_score'] +          # 랭킹 점수 추가
+        0.1 * candidates['age_similarity'] +      # 연령 유사도 
+        0.1 * (1 / (1 + candidates['watch_hours']))  # 시간 효율성
     )
     return candidates
 
 def select_contents(candidates, max_hours, desired_min, desired_max):
+    """플랫폼별 시청시간을 고려한 콘텐츠 선택"""
     candidates = candidates.sort_values('combined_score', ascending=False)
     candidates = candidates.drop_duplicates(subset=['title'])
+    
+    # 플랫폼별 시청시간 추적
+    platform_hours = {}
+    selected_contents = set()  # 이미 선택된 콘텐츠 추적
     selected = []
-    total_hours = 0
+    
     for _, row in candidates.iterrows():
-        if total_hours + row.watch_hours > max_hours:
+        title = row['title']
+        platforms = []
+        if pd.notna(row.get('platform')):
+            platforms = [p.strip() for p in str(row['platform']).split(',') if p.strip()]
+        
+        watch_hours = row.get('watch_hours', 0)
+        
+        # 이미 선택된 콘텐츠면 스킵 (다른 플랫폼에서 이미 추가됨)
+        if title in selected_contents:
             continue
-        selected.append(row)
-        total_hours += row.watch_hours
-        if len(selected) >= desired_max:
-            break
+            
+        # 각 플랫폼에서 이 콘텐츠를 볼 수 있는지 확인
+        can_add = False
+        best_platform = None
+        
+        for platform in platforms:
+            if platform not in platform_hours:
+                platform_hours[platform] = 0
+                
+            # 이 플랫폼에서 시청시간 여유가 있는지 확인
+            if platform_hours[platform] + watch_hours <= max_hours:
+                can_add = True
+                best_platform = platform
+                break
+        
+        if can_add:
+            selected.append(row)
+            selected_contents.add(title)
+            platform_hours[best_platform] += watch_hours
+            
+            if len(selected) >= desired_max:
+                break
+    
+    # 최소 개수 보장 로직
     if len(selected) < desired_min:
         top = candidates.head(desired_min)
         selected = [row for _, row in top.iterrows()]
-        total_hours = sum(row.watch_hours for row in selected)
+        # 이 경우는 플랫폼별 시간 제약을 무시하고 최소 개수 보장
+    
     sel_df = pd.DataFrame(selected)
+    total_hours = sum(row.get('watch_hours', 0) for row in selected)
+    
+    logger.info(f"플랫폼별 시청시간 분배: {platform_hours}")
+    logger.info(f"중복 제거된 콘텐츠 수: {len(selected_contents)}")
+
     return sel_df, total_hours
 
 def get_ott_plan_candidates(sel_df, prices, budget):
@@ -379,6 +428,7 @@ def get_ott_plan_candidates(sel_df, prices, budget):
     for _, row in sel_df.iterrows():
         if pd.notna(row.get('platform')):
             for p in str(row['platform']).split(','):
+                platforms.add(p.strip())
     # 후보 생성 (cover_set 포함)
     raw_candidates = []
     for platform in platforms:
