@@ -1,0 +1,446 @@
+rank,title,genre,year,score,platform,age_group,gender
+1,당신의 맛,드라마,2025,80.0,"coupang, disney, netflix",10대,남성
+5,언젠가는 슬기로울 전공의생활,드라마,2025,67.1,"coupang, disney, netflix, tving",10대,남성
+6,천국보다 아름다운,드라마,2025,64.0,"coupang, disney, netflix",10대,남성
+8,귀궁,드라마,2025,75.7,"coupang, disney, netflix, wavve",10대,남성
+12,약한영웅 Class 1,드라마,2022,95.3,"coupang, disney, netflix, wavve",10대,남성
+14,폭싹 속았수다,드라마,2025,97.0,"coupang, disney, netflix",10대,남성
+17,승부,영화,2025,94.7,"coupang, disney, netflix",10대,남성
+19,하트페어링,예능,2025,85.7,"coupang, disney, netflix, tving, wavve",10대,남성
+20,태어난 김에 세계일주4,예능,2025,83.3,"coupang, disney, netflix, wavve",10대,남성
+21,데블스 플랜,예능,2023,88.0,"coupang, disney, netflix",10대,남성
+22,슬기로운 의사생활 시즌 1,드라마,2020,95.5,"coupang, disney, netflix, tving",10대,남성
+23,임영웅│아임 히어로 더 스타디움,"영화, 공연",2024,26.9,"coupang, disney, netflix, watcha, wavve",10대,남성
+25,약한영웅 Class 2,드라마,2025,73.6,"coupang, disney, netflix",10대,남성
+26,진격의 거인 The Final Season 완결편 (전편),애니메이션,2023,98.4,"coupang, disney, netflix, tving, watcha, wavve",10대,남성
+28,슬기로운 의사생활 시즌 2,드라마,2021,89.4,"coupang, disney, netflix, tving",10대,남성
+34,데블스 플랜: 데스룸,예능,2025,95.2,"coupang, disney, netflix",10대,남성
+35,이혼숙려캠프,예능,2024,73.7,"coupang, disney, netflix, tving",10대,남성
+36,미션 임파서블: 데드 레코닝,영화,2023,95.4,"coupang, disney, netflix",10대,남성
+39,노트북,영화,2004,90.8,"coupang, disney, netflix, wavve",10대,남성
+44,레디 오어 낫,영화,2019,83.7,"coupang, disney, netflix",10대,남성
+52,더 글로리 파트 2,드라마,2023,96.9,"coupang, disney, netflix",10대,남성
+61,중증외상센터,드라마,2025,96.9,"coupang, disney, netflix",10대,남성
+67,태어난 김에 세계일주 3,예능,2023,92.6,"coupang, disney, netflix, wavve",10대,남성
+89,악마를 보았다,영화,2010,86.9,"coupang, disney, netflix, tving, watcha, wavve",10대,남성
+91,오징어 게임 시즌 2,드라마,2024,77.5,"coupang, disney, netflix",10대,남성
+92,높은 풀 속에서,영화,2019,42.7,"coupang, disney, netflix",10대,남성
+94,엑스테리토리얼,영화,2025,48.0,"coupang, disney, netflix",10대,남성
+37,신병 시즌 3,드라마,2025,95.9,"coupang, disney, tving",10대,남성
+43,바니와 오빠들,드라마,2025,60.0,"coupang, disney, tving, wavve",10대,남성
+55,지지고 볶는 여행,예능,2025,66.7,"coupang, disney, tving",10대,남성
+58,더 샌드,영화,2016,11.8,"coupang, disney, tving, watcha, wavve",10대,남성
+65,선재 업고 튀어,드라마,2024,93.0,"coupang, disney, tving",10대,남성
+73,뭉쳐야 찬다 4,예능,2025,20.0,"coupang, disney, tving",10대,남성
+75,"이재, 곧 죽습니다 part 2",드라마,2024,94.2,"coupang, disney, tving",10대,남성
+76,"이재, 곧 죽습니다 part 1",드라마,2023,93.7,"coupang, disney, tving",10대,남성
+81,언니네 산지직송2,예능,2025,28.6,"coupang, disney, tving",10대,남성
+86,샤크: 더 비기닝,영화,2021,58.5,"coupang, disney, tving",10대,남성
+3,야당,영화,2025,90.4,"boxoffice, coupang, disney",10대,남성
+4,파과,영화,2025,85.4,"boxoffice, coupang, disney",10대,남성
+7,알라딘,영화,2019,93.0,"coupang, disney",10대,남성
+10,미션 임파서블 : 고스트 프로토콜,영화,2011,98.2,"coupang, disney, wavve",10대,남성
+11,미션 임파서블,영화,1996,98.8,"coupang, disney, wavve",10대,남성
+13,거룩한 밤: 데몬 헌터스,영화,2025,17.9,"boxoffice, coupang, disney",10대,남성
+15,미션 임파서블: 파이널 레코닝,영화,2025,80.0,"boxoffice, coupang, disney",10대,남성
+18,썬더볼츠*,영화,2025,96.2,"boxoffice, coupang, disney",10대,남성
+27,A MINECRAFT MOVIE 마인크래프트 무비,영화,2025,63.8,"boxoffice, coupang, disney",10대,남성
+30,24시 헬스클럽,드라마,2025,66.7,"coupang, disney, watcha, wavve",10대,남성
+31,디어엠,드라마,2025,85.7,"coupang, disney, watcha, wavve",10대,남성
+32,바이러스,영화,2025,46.0,"boxoffice, coupang, disney",10대,남성
+33,해피엔드,영화,2024,97.3,"boxoffice, coupang, disney",10대,남성
+38,"미안하다, 사랑한다",드라마,2004,94.0,"coupang, disney, watcha, wavve",10대,남성
+40,서브스턴스,영화,2024,94.3,"coupang, disney, watcha, wavve",10대,남성
+41,태어난 김에 세계일주,예능,2022,95.1,"coupang, disney, wavve",10대,남성
+42,괴수 8호: 미션 리컨,"영화, 애니메이션",2025,80.0,"boxoffice, coupang, disney",10대,남성
+45,조명가게,드라마,2024,93.8,"coupang, disney",10대,남성
+46,범죄도시 2,영화,2022,93.3,"coupang, disney, wavve",10대,남성
+47,하이퍼나이프,드라마,2025,87.2,"coupang, disney",10대,남성
+48,콘클라베,영화,2024,98.5,"boxoffice, coupang, disney, watcha, wavve",10대,남성
+49,28주 후,영화,2007,88.1,"coupang, disney, wavve",10대,남성
+50,극장판 진격의 거인 완결편 더 라스트 어택,"영화, 애니메이션",2024,98.7,"boxoffice, coupang, disney",10대,남성
+51,로비,영화,2025,58.3,"coupang, disney, watcha, wavve",10대,남성
+53,독수리 5형제를 부탁해!,드라마,2025,87.5,"coupang, disney, wavve",10대,남성
+56,범죄도시,영화,2017,92.7,"coupang, disney, wavve",10대,남성
+57,나 혼자 산다,예능,2013,65.0,"coupang, disney, watcha, wavve",10대,남성
+59,플로리다 프로젝트,영화,2018,96.0,"boxoffice, coupang, disney",10대,남성
+60,최종병기 앨리스,드라마,2022,73.3,"coupang, disney, watcha",10대,남성
+62,범죄도시4,영화,2024,74.2,"coupang, disney, wavve",10대,남성
+64,드래곤 길들이기,"영화, 애니메이션",2010,97.1,"coupang, disney, watcha, wavve",10대,남성
+66,무빙,드라마,2023,95.9,"coupang, disney",10대,남성
+68,검은 수녀들,영화,2025,38.7,"coupang, disney",10대,남성
+70,미키 17,영화,2025,93.9,"coupang, disney, wavve",10대,남성
+71,히트맨2,영화,2025,51.5,"coupang, disney, wavve",10대,남성
+72,위드 러브,영화,2025,40.0,"boxoffice, coupang, disney",10대,남성
+74,마녀,영화,2018,82.7,"coupang, disney, wavve",10대,남성
+77,퇴마록,"영화, 애니메이션",2025,94.2,"coupang, disney, watcha, wavve",10대,남성
+78,백설공주,영화,2025,19.8,"coupang, disney",10대,남성
+79,히든 페이스,영화,2024,80.2,"coupang, disney",10대,남성
+82,원티드,영화,2008,93.7,"coupang, disney, watcha, wavve",10대,남성
+84,뉴토피아,드라마,2025,61.3,"coupang, disney",10대,남성
+85,전지적 참견 시점,예능,2018,59.4,"coupang, disney, watcha, wavve",10대,남성
+87,캡틴 아메리카: 브레이브 뉴 월드,영화,2025,79.1,"coupang, disney",10대,남성
+90,플로우,"영화, 애니메이션",2024,95.8,"coupang, disney, watcha, wavve",10대,남성
+93,SNL 코리아 시즌 7,예능,2016,85.7,"coupang, disney",10대,남성
+95,메간,영화,2023,75.5,"coupang, disney, watcha, wavve",10대,남성
+96,청설,영화,2024,87.8,"coupang, disney, watcha, wavve",10대,남성
+97,나미비아의 사막,영화,2024,84.4,"boxoffice, coupang, disney",10대,남성
+98,"그 시절, 우리가 좋아했던 소녀",영화,2025,35.5,"coupang, disney, watcha, wavve",10대,남성
+99,변호인,영화,2013,95.5,"coupang, disney",10대,남성
+100,그린 마일,영화,2000,96.2,"coupang, disney, wavve",10대,남성
+1,당신의 맛,드라마,2025,80.0,"coupang, disney, netflix",20대,남성
+5,언젠가는 슬기로울 전공의생활,드라마,2025,67.1,"coupang, disney, netflix, tving",20대,남성
+6,천국보다 아름다운,드라마,2025,64.0,"coupang, disney, netflix",20대,남성
+8,귀궁,드라마,2025,75.7,"coupang, disney, netflix, wavve",20대,남성
+12,약한영웅 Class 1,드라마,2022,95.3,"coupang, disney, netflix, wavve",20대,남성
+14,폭싹 속았수다,드라마,2025,97.0,"coupang, disney, netflix",20대,남성
+17,승부,영화,2025,94.7,"coupang, disney, netflix",20대,남성
+19,하트페어링,예능,2025,85.7,"coupang, disney, netflix, tving, wavve",20대,남성
+20,태어난 김에 세계일주4,예능,2025,83.3,"coupang, disney, netflix, wavve",20대,남성
+21,데블스 플랜,예능,2023,88.0,"coupang, disney, netflix",20대,남성
+22,슬기로운 의사생활 시즌 1,드라마,2020,95.5,"coupang, disney, netflix, tving",20대,남성
+23,임영웅│아임 히어로 더 스타디움,"영화, 공연",2024,26.9,"coupang, disney, netflix, watcha, wavve",20대,남성
+25,약한영웅 Class 2,드라마,2025,73.6,"coupang, disney, netflix",20대,남성
+26,진격의 거인 The Final Season 완결편 (전편),애니메이션,2023,98.4,"coupang, disney, netflix, tving, watcha, wavve",20대,남성
+28,슬기로운 의사생활 시즌 2,드라마,2021,89.4,"coupang, disney, netflix, tving",20대,남성
+34,데블스 플랜: 데스룸,예능,2025,95.2,"coupang, disney, netflix",20대,남성
+35,이혼숙려캠프,예능,2024,73.7,"coupang, disney, netflix, tving",20대,남성
+36,미션 임파서블: 데드 레코닝,영화,2023,95.4,"coupang, disney, netflix",20대,남성
+39,노트북,영화,2004,90.8,"coupang, disney, netflix, wavve",20대,남성
+44,레디 오어 낫,영화,2019,83.7,"coupang, disney, netflix",20대,남성
+52,더 글로리 파트 2,드라마,2023,96.9,"coupang, disney, netflix",20대,남성
+61,중증외상센터,드라마,2025,96.9,"coupang, disney, netflix",20대,남성
+67,태어난 김에 세계일주 3,예능,2023,92.6,"coupang, disney, netflix, wavve",20대,남성
+89,악마를 보았다,영화,2010,86.9,"coupang, disney, netflix, tving, watcha, wavve",20대,남성
+91,오징어 게임 시즌 2,드라마,2024,77.5,"coupang, disney, netflix",20대,남성
+92,높은 풀 속에서,영화,2019,42.7,"coupang, disney, netflix",20대,남성
+94,엑스테리토리얼,영화,2025,48.0,"coupang, disney, netflix",20대,남성
+37,신병 시즌 3,드라마,2025,95.9,"coupang, disney, tving",20대,남성
+43,바니와 오빠들,드라마,2025,60.0,"coupang, disney, tving, wavve",20대,남성
+55,지지고 볶는 여행,예능,2025,66.7,"coupang, disney, tving",20대,남성
+58,더 샌드,영화,2016,11.8,"coupang, disney, tving, watcha, wavve",20대,남성
+65,선재 업고 튀어,드라마,2024,93.0,"coupang, disney, tving",20대,남성
+73,뭉쳐야 찬다 4,예능,2025,20.0,"coupang, disney, tving",20대,남성
+75,"이재, 곧 죽습니다 part 2",드라마,2024,94.2,"coupang, disney, tving",20대,남성
+76,"이재, 곧 죽습니다 part 1",드라마,2023,93.7,"coupang, disney, tving",20대,남성
+81,언니네 산지직송2,예능,2025,28.6,"coupang, disney, tving",20대,남성
+86,샤크: 더 비기닝,영화,2021,58.5,"coupang, disney, tving",20대,남성
+3,야당,영화,2025,90.4,"boxoffice, coupang, disney",20대,남성
+4,파과,영화,2025,85.4,"boxoffice, coupang, disney",20대,남성
+7,알라딘,영화,2019,93.0,"coupang, disney",20대,남성
+10,미션 임파서블 : 고스트 프로토콜,영화,2011,98.2,"coupang, disney, wavve",20대,남성
+11,미션 임파서블,영화,1996,98.8,"coupang, disney, wavve",20대,남성
+13,거룩한 밤: 데몬 헌터스,영화,2025,17.9,"boxoffice, coupang, disney",20대,남성
+15,미션 임파서블: 파이널 레코닝,영화,2025,80.0,"boxoffice, coupang, disney",20대,남성
+18,썬더볼츠*,영화,2025,96.2,"boxoffice, coupang, disney",20대,남성
+27,A MINECRAFT MOVIE 마인크래프트 무비,영화,2025,63.8,"boxoffice, coupang, disney",20대,남성
+30,24시 헬스클럽,드라마,2025,66.7,"coupang, disney, watcha, wavve",20대,남성
+31,디어엠,드라마,2025,85.7,"coupang, disney, watcha, wavve",20대,남성
+32,바이러스,영화,2025,46.0,"boxoffice, coupang, disney",20대,남성
+33,해피엔드,영화,2024,97.3,"boxoffice, coupang, disney",20대,남성
+38,"미안하다, 사랑한다",드라마,2004,94.0,"coupang, disney, watcha, wavve",20대,남성
+40,서브스턴스,영화,2024,94.3,"coupang, disney, watcha, wavve",20대,남성
+41,태어난 김에 세계일주,예능,2022,95.1,"coupang, disney, wavve",20대,남성
+42,괴수 8호: 미션 리컨,"영화, 애니메이션",2025,80.0,"boxoffice, coupang, disney",20대,남성
+45,조명가게,드라마,2024,93.8,"coupang, disney",20대,남성
+46,범죄도시 2,영화,2022,93.3,"coupang, disney, wavve",20대,남성
+47,하이퍼나이프,드라마,2025,87.2,"coupang, disney",20대,남성
+48,콘클라베,영화,2024,98.5,"boxoffice, coupang, disney, watcha, wavve",20대,남성
+49,28주 후,영화,2007,88.1,"coupang, disney, wavve",20대,남성
+50,극장판 진격의 거인 완결편 더 라스트 어택,"영화, 애니메이션",2024,98.7,"boxoffice, coupang, disney",20대,남성
+51,로비,영화,2025,58.3,"coupang, disney, watcha, wavve",20대,남성
+53,독수리 5형제를 부탁해!,드라마,2025,87.5,"coupang, disney, wavve",20대,남성
+56,범죄도시,영화,2017,92.7,"coupang, disney, wavve",20대,남성
+57,나 혼자 산다,예능,2013,65.0,"coupang, disney, watcha, wavve",20대,남성
+59,플로리다 프로젝트,영화,2018,96.0,"boxoffice, coupang, disney",20대,남성
+60,최종병기 앨리스,드라마,2022,73.3,"coupang, disney, watcha",20대,남성
+62,범죄도시4,영화,2024,74.2,"coupang, disney, wavve",20대,남성
+64,드래곤 길들이기,"영화, 애니메이션",2010,97.1,"coupang, disney, watcha, wavve",20대,남성
+66,무빙,드라마,2023,95.9,"coupang, disney",20대,남성
+68,검은 수녀들,영화,2025,38.7,"coupang, disney",20대,남성
+70,미키 17,영화,2025,93.9,"coupang, disney, wavve",20대,남성
+71,히트맨2,영화,2025,51.5,"coupang, disney, wavve",20대,남성
+72,위드 러브,영화,2025,40.0,"boxoffice, coupang, disney",20대,남성
+74,마녀,영화,2018,82.7,"coupang, disney, wavve",20대,남성
+77,퇴마록,"영화, 애니메이션",2025,94.2,"coupang, disney, watcha, wavve",20대,남성
+78,백설공주,영화,2025,19.8,"coupang, disney",20대,남성
+79,히든 페이스,영화,2024,80.2,"coupang, disney",20대,남성
+82,원티드,영화,2008,93.7,"coupang, disney, watcha, wavve",20대,남성
+84,뉴토피아,드라마,2025,61.3,"coupang, disney",20대,남성
+85,전지적 참견 시점,예능,2018,59.4,"coupang, disney, watcha, wavve",20대,남성
+87,캡틴 아메리카: 브레이브 뉴 월드,영화,2025,79.1,"coupang, disney",20대,남성
+90,플로우,"영화, 애니메이션",2024,95.8,"coupang, disney, watcha, wavve",20대,남성
+93,SNL 코리아 시즌 7,예능,2016,85.7,"coupang, disney",20대,남성
+95,메간,영화,2023,75.5,"coupang, disney, watcha, wavve",20대,남성
+96,청설,영화,2024,87.8,"coupang, disney, watcha, wavve",20대,남성
+97,나미비아의 사막,영화,2024,84.4,"boxoffice, coupang, disney",20대,남성
+98,"그 시절, 우리가 좋아했던 소녀",영화,2025,35.5,"coupang, disney, watcha, wavve",20대,남성
+99,변호인,영화,2013,95.5,"coupang, disney",20대,남성
+100,그린 마일,영화,2000,96.2,"coupang, disney, wavve",20대,남성
+1,당신의 맛,드라마,2025,80.0,"coupang, disney, netflix",30대,남성
+5,언젠가는 슬기로울 전공의생활,드라마,2025,67.1,"coupang, disney, netflix, tving",30대,남성
+6,천국보다 아름다운,드라마,2025,64.0,"coupang, disney, netflix",30대,남성
+8,귀궁,드라마,2025,75.7,"coupang, disney, netflix, wavve",30대,남성
+12,약한영웅 Class 1,드라마,2022,95.3,"coupang, disney, netflix, wavve",30대,남성
+14,폭싹 속았수다,드라마,2025,97.0,"coupang, disney, netflix",30대,남성
+17,승부,영화,2025,94.7,"coupang, disney, netflix",30대,남성
+19,하트페어링,예능,2025,85.7,"coupang, disney, netflix, tving, wavve",30대,남성
+20,태어난 김에 세계일주4,예능,2025,83.3,"coupang, disney, netflix, wavve",30대,남성
+21,데블스 플랜,예능,2023,88.0,"coupang, disney, netflix",30대,남성
+22,슬기로운 의사생활 시즌 1,드라마,2020,95.5,"coupang, disney, netflix, tving",30대,남성
+23,임영웅│아임 히어로 더 스타디움,"영화, 공연",2024,26.9,"coupang, disney, netflix, watcha, wavve",30대,남성
+25,약한영웅 Class 2,드라마,2025,73.6,"coupang, disney, netflix",30대,남성
+26,진격의 거인 The Final Season 완결편 (전편),애니메이션,2023,98.4,"coupang, disney, netflix, tving, watcha, wavve",30대,남성
+28,슬기로운 의사생활 시즌 2,드라마,2021,89.4,"coupang, disney, netflix, tving",30대,남성
+34,데블스 플랜: 데스룸,예능,2025,95.2,"coupang, disney, netflix",30대,남성
+35,이혼숙려캠프,예능,2024,73.7,"coupang, disney, netflix, tving",30대,남성
+36,미션 임파서블: 데드 레코닝,영화,2023,95.4,"coupang, disney, netflix",30대,남성
+39,노트북,영화,2004,90.8,"coupang, disney, netflix, wavve",30대,남성
+44,레디 오어 낫,영화,2019,83.7,"coupang, disney, netflix",30대,남성
+52,더 글로리 파트 2,드라마,2023,96.9,"coupang, disney, netflix",30대,남성
+61,중증외상센터,드라마,2025,96.9,"coupang, disney, netflix",30대,남성
+67,태어난 김에 세계일주 3,예능,2023,92.6,"coupang, disney, netflix, wavve",30대,남성
+89,악마를 보았다,영화,2010,86.9,"coupang, disney, netflix, tving, watcha, wavve",30대,남성
+91,오징어 게임 시즌 2,드라마,2024,77.5,"coupang, disney, netflix",30대,남성
+92,높은 풀 속에서,영화,2019,42.7,"coupang, disney, netflix",30대,남성
+94,엑스테리토리얼,영화,2025,48.0,"coupang, disney, netflix",30대,남성
+37,신병 시즌 3,드라마,2025,95.9,"coupang, disney, tving",30대,남성
+43,바니와 오빠들,드라마,2025,60.0,"coupang, disney, tving, wavve",30대,남성
+55,지지고 볶는 여행,예능,2025,66.7,"coupang, disney, tving",30대,남성
+58,더 샌드,영화,2016,11.8,"coupang, disney, tving, watcha, wavve",30대,남성
+65,선재 업고 튀어,드라마,2024,93.0,"coupang, disney, tving",30대,남성
+73,뭉쳐야 찬다 4,예능,2025,20.0,"coupang, disney, tving",30대,남성
+75,"이재, 곧 죽습니다 part 2",드라마,2024,94.2,"coupang, disney, tving",30대,남성
+76,"이재, 곧 죽습니다 part 1",드라마,2023,93.7,"coupang, disney, tving",30대,남성
+81,언니네 산지직송2,예능,2025,28.6,"coupang, disney, tving",30대,남성
+86,샤크: 더 비기닝,영화,2021,58.5,"coupang, disney, tving",30대,남성
+3,야당,영화,2025,90.4,"boxoffice, coupang, disney",30대,남성
+4,파과,영화,2025,85.4,"boxoffice, coupang, disney",30대,남성
+7,알라딘,영화,2019,93.0,"coupang, disney",30대,남성
+10,미션 임파서블 : 고스트 프로토콜,영화,2011,98.2,"coupang, disney, wavve",30대,남성
+11,미션 임파서블,영화,1996,98.8,"coupang, disney, wavve",30대,남성
+13,거룩한 밤: 데몬 헌터스,영화,2025,17.9,"boxoffice, coupang, disney",30대,남성
+15,미션 임파서블: 파이널 레코닝,영화,2025,80.0,"boxoffice, coupang, disney",30대,남성
+18,썬더볼츠*,영화,2025,96.2,"boxoffice, coupang, disney",30대,남성
+27,A MINECRAFT MOVIE 마인크래프트 무비,영화,2025,63.8,"boxoffice, coupang, disney",30대,남성
+30,24시 헬스클럽,드라마,2025,66.7,"coupang, disney, watcha, wavve",30대,남성
+31,디어엠,드라마,2025,85.7,"coupang, disney, watcha, wavve",30대,남성
+32,바이러스,영화,2025,46.0,"boxoffice, coupang, disney",30대,남성
+33,해피엔드,영화,2024,97.3,"boxoffice, coupang, disney",30대,남성
+38,"미안하다, 사랑한다",드라마,2004,94.0,"coupang, disney, watcha, wavve",30대,남성
+40,서브스턴스,영화,2024,94.3,"coupang, disney, watcha, wavve",30대,남성
+41,태어난 김에 세계일주,예능,2022,95.1,"coupang, disney, wavve",30대,남성
+42,괴수 8호: 미션 리컨,"영화, 애니메이션",2025,80.0,"boxoffice, coupang, disney",30대,남성
+45,조명가게,드라마,2024,93.8,"coupang, disney",30대,남성
+46,범죄도시 2,영화,2022,93.3,"coupang, disney, wavve",30대,남성
+47,하이퍼나이프,드라마,2025,87.2,"coupang, disney",30대,남성
+48,콘클라베,영화,2024,98.5,"boxoffice, coupang, disney, watcha, wavve",30대,남성
+49,28주 후,영화,2007,88.1,"coupang, disney, wavve",30대,남성
+50,극장판 진격의 거인 완결편 더 라스트 어택,"영화, 애니메이션",2024,98.7,"boxoffice, coupang, disney",30대,남성
+51,로비,영화,2025,58.3,"coupang, disney, watcha, wavve",30대,남성
+53,독수리 5형제를 부탁해!,드라마,2025,87.5,"coupang, disney, wavve",30대,남성
+56,범죄도시,영화,2017,92.7,"coupang, disney, wavve",30대,남성
+57,나 혼자 산다,예능,2013,65.0,"coupang, disney, watcha, wavve",30대,남성
+59,플로리다 프로젝트,영화,2018,96.0,"boxoffice, coupang, disney",30대,남성
+60,최종병기 앨리스,드라마,2022,73.3,"coupang, disney, watcha",30대,남성
+62,범죄도시4,영화,2024,74.2,"coupang, disney, wavve",30대,남성
+64,드래곤 길들이기,"영화, 애니메이션",2010,97.1,"coupang, disney, watcha, wavve",30대,남성
+66,무빙,드라마,2023,95.9,"coupang, disney",30대,남성
+68,검은 수녀들,영화,2025,38.7,"coupang, disney",30대,남성
+70,미키 17,영화,2025,93.9,"coupang, disney, wavve",30대,남성
+71,히트맨2,영화,2025,51.5,"coupang, disney, wavve",30대,남성
+72,위드 러브,영화,2025,40.0,"boxoffice, coupang, disney",30대,남성
+74,마녀,영화,2018,82.7,"coupang, disney, wavve",30대,남성
+77,퇴마록,"영화, 애니메이션",2025,94.2,"coupang, disney, watcha, wavve",30대,남성
+78,백설공주,영화,2025,19.8,"coupang, disney",30대,남성
+79,히든 페이스,영화,2024,80.2,"coupang, disney",30대,남성
+82,원티드,영화,2008,93.7,"coupang, disney, watcha, wavve",30대,남성
+84,뉴토피아,드라마,2025,61.3,"coupang, disney",30대,남성
+85,전지적 참견 시점,예능,2018,59.4,"coupang, disney, watcha, wavve",30대,남성
+87,캡틴 아메리카: 브레이브 뉴 월드,영화,2025,79.1,"coupang, disney",30대,남성
+90,플로우,"영화, 애니메이션",2024,95.8,"coupang, disney, watcha, wavve",30대,남성
+93,SNL 코리아 시즌 7,예능,2016,85.7,"coupang, disney",30대,남성
+95,메간,영화,2023,75.5,"coupang, disney, watcha, wavve",30대,남성
+96,청설,영화,2024,87.8,"coupang, disney, watcha, wavve",30대,남성
+97,나미비아의 사막,영화,2024,84.4,"boxoffice, coupang, disney",30대,남성
+98,"그 시절, 우리가 좋아했던 소녀",영화,2025,35.5,"coupang, disney, watcha, wavve",30대,남성
+99,변호인,영화,2013,95.5,"coupang, disney",30대,남성
+100,그린 마일,영화,2000,96.2,"coupang, disney, wavve",30대,남성
+1,당신의 맛,드라마,2025,80.0,"coupang, disney, netflix",40대,남성
+5,언젠가는 슬기로울 전공의생활,드라마,2025,67.1,"coupang, disney, netflix, tving",40대,남성
+6,천국보다 아름다운,드라마,2025,64.0,"coupang, disney, netflix",40대,남성
+8,귀궁,드라마,2025,75.7,"coupang, disney, netflix, wavve",40대,남성
+12,약한영웅 Class 1,드라마,2022,95.3,"coupang, disney, netflix, wavve",40대,남성
+14,폭싹 속았수다,드라마,2025,97.0,"coupang, disney, netflix",40대,남성
+17,승부,영화,2025,94.7,"coupang, disney, netflix",40대,남성
+19,하트페어링,예능,2025,85.7,"coupang, disney, netflix, tving, wavve",40대,남성
+20,태어난 김에 세계일주4,예능,2025,83.3,"coupang, disney, netflix, wavve",40대,남성
+21,데블스 플랜,예능,2023,88.0,"coupang, disney, netflix",40대,남성
+22,슬기로운 의사생활 시즌 1,드라마,2020,95.5,"coupang, disney, netflix, tving",40대,남성
+23,임영웅│아임 히어로 더 스타디움,"영화, 공연",2024,26.9,"coupang, disney, netflix, watcha, wavve",40대,남성
+25,약한영웅 Class 2,드라마,2025,73.6,"coupang, disney, netflix",40대,남성
+26,진격의 거인 The Final Season 완결편 (전편),애니메이션,2023,98.4,"coupang, disney, netflix, tving, watcha, wavve",40대,남성
+28,슬기로운 의사생활 시즌 2,드라마,2021,89.4,"coupang, disney, netflix, tving",40대,남성
+34,데블스 플랜: 데스룸,예능,2025,95.2,"coupang, disney, netflix",40대,남성
+35,이혼숙려캠프,예능,2024,73.7,"coupang, disney, netflix, tving",40대,남성
+36,미션 임파서블: 데드 레코닝,영화,2023,95.4,"coupang, disney, netflix",40대,남성
+39,노트북,영화,2004,90.8,"coupang, disney, netflix, wavve",40대,남성
+44,레디 오어 낫,영화,2019,83.7,"coupang, disney, netflix",40대,남성
+52,더 글로리 파트 2,드라마,2023,96.9,"coupang, disney, netflix",40대,남성
+61,중증외상센터,드라마,2025,96.9,"coupang, disney, netflix",40대,남성
+67,태어난 김에 세계일주 3,예능,2023,92.6,"coupang, disney, netflix, wavve",40대,남성
+89,악마를 보았다,영화,2010,86.9,"coupang, disney, netflix, tving, watcha, wavve",40대,남성
+91,오징어 게임 시즌 2,드라마,2024,77.5,"coupang, disney, netflix",40대,남성
+92,높은 풀 속에서,영화,2019,42.7,"coupang, disney, netflix",40대,남성
+94,엑스테리토리얼,영화,2025,48.0,"coupang, disney, netflix",40대,남성
+37,신병 시즌 3,드라마,2025,95.9,"coupang, disney, tving",40대,남성
+43,바니와 오빠들,드라마,2025,60.0,"coupang, disney, tving, wavve",40대,남성
+55,지지고 볶는 여행,예능,2025,66.7,"coupang, disney, tving",40대,남성
+58,더 샌드,영화,2016,11.8,"coupang, disney, tving, watcha, wavve",40대,남성
+65,선재 업고 튀어,드라마,2024,93.0,"coupang, disney, tving",40대,남성
+73,뭉쳐야 찬다 4,예능,2025,20.0,"coupang, disney, tving",40대,남성
+75,"이재, 곧 죽습니다 part 2",드라마,2024,94.2,"coupang, disney, tving",40대,남성
+76,"이재, 곧 죽습니다 part 1",드라마,2023,93.7,"coupang, disney, tving",40대,남성
+81,언니네 산지직송2,예능,2025,28.6,"coupang, disney, tving",40대,남성
+86,샤크: 더 비기닝,영화,2021,58.5,"coupang, disney, tving",40대,남성
+3,야당,영화,2025,90.4,"boxoffice, coupang, disney",40대,남성
+4,파과,영화,2025,85.4,"boxoffice, coupang, disney",40대,남성
+7,알라딘,영화,2019,93.0,"coupang, disney",40대,남성
+10,미션 임파서블 : 고스트 프로토콜,영화,2011,98.2,"coupang, disney, wavve",40대,남성
+11,미션 임파서블,영화,1996,98.8,"coupang, disney, wavve",40대,남성
+13,거룩한 밤: 데몬 헌터스,영화,2025,17.9,"boxoffice, coupang, disney",40대,남성
+15,미션 임파서블: 파이널 레코닝,영화,2025,80.0,"boxoffice, coupang, disney",40대,남성
+18,썬더볼츠*,영화,2025,96.2,"boxoffice, coupang, disney",40대,남성
+27,A MINECRAFT MOVIE 마인크래프트 무비,영화,2025,63.8,"boxoffice, coupang, disney",40대,남성
+30,24시 헬스클럽,드라마,2025,66.7,"coupang, disney, watcha, wavve",40대,남성
+31,디어엠,드라마,2025,85.7,"coupang, disney, watcha, wavve",40대,남성
+32,바이러스,영화,2025,46.0,"boxoffice, coupang, disney",40대,남성
+33,해피엔드,영화,2024,97.3,"boxoffice, coupang, disney",40대,남성
+38,"미안하다, 사랑한다",드라마,2004,94.0,"coupang, disney, watcha, wavve",40대,남성
+40,서브스턴스,영화,2024,94.3,"coupang, disney, watcha, wavve",40대,남성
+41,태어난 김에 세계일주,예능,2022,95.1,"coupang, disney, wavve",40대,남성
+42,괴수 8호: 미션 리컨,"영화, 애니메이션",2025,80.0,"boxoffice, coupang, disney",40대,남성
+45,조명가게,드라마,2024,93.8,"coupang, disney",40대,남성
+46,범죄도시 2,영화,2022,93.3,"coupang, disney, wavve",40대,남성
+47,하이퍼나이프,드라마,2025,87.2,"coupang, disney",40대,남성
+48,콘클라베,영화,2024,98.5,"boxoffice, coupang, disney, watcha, wavve",40대,남성
+49,28주 후,영화,2007,88.1,"coupang, disney, wavve",40대,남성
+50,극장판 진격의 거인 완결편 더 라스트 어택,"영화, 애니메이션",2024,98.7,"boxoffice, coupang, disney",40대,남성
+51,로비,영화,2025,58.3,"coupang, disney, watcha, wavve",40대,남성
+53,독수리 5형제를 부탁해!,드라마,2025,87.5,"coupang, disney, wavve",40대,남성
+56,범죄도시,영화,2017,92.7,"coupang, disney, wavve",40대,남성
+57,나 혼자 산다,예능,2013,65.0,"coupang, disney, watcha, wavve",40대,남성
+59,플로리다 프로젝트,영화,2018,96.0,"boxoffice, coupang, disney",40대,남성
+60,최종병기 앨리스,드라마,2022,73.3,"coupang, disney, watcha",40대,남성
+62,범죄도시4,영화,2024,74.2,"coupang, disney, wavve",40대,남성
+64,드래곤 길들이기,"영화, 애니메이션",2010,97.1,"coupang, disney, watcha, wavve",40대,남성
+66,무빙,드라마,2023,95.9,"coupang, disney",40대,남성
+68,검은 수녀들,영화,2025,38.7,"coupang, disney",40대,남성
+70,미키 17,영화,2025,93.9,"coupang, disney, wavve",40대,남성
+71,히트맨2,영화,2025,51.5,"coupang, disney, wavve",40대,남성
+72,위드 러브,영화,2025,40.0,"boxoffice, coupang, disney",40대,남성
+74,마녀,영화,2018,82.7,"coupang, disney, wavve",40대,남성
+77,퇴마록,"영화, 애니메이션",2025,94.2,"coupang, disney, watcha, wavve",40대,남성
+78,백설공주,영화,2025,19.8,"coupang, disney",40대,남성
+79,히든 페이스,영화,2024,80.2,"coupang, disney",40대,남성
+82,원티드,영화,2008,93.7,"coupang, disney, watcha, wavve",40대,남성
+84,뉴토피아,드라마,2025,61.3,"coupang, disney",40대,남성
+85,전지적 참견 시점,예능,2018,59.4,"coupang, disney, watcha, wavve",40대,남성
+87,캡틴 아메리카: 브레이브 뉴 월드,영화,2025,79.1,"coupang, disney",40대,남성
+90,플로우,"영화, 애니메이션",2024,95.8,"coupang, disney, watcha, wavve",40대,남성
+93,SNL 코리아 시즌 7,예능,2016,85.7,"coupang, disney",40대,남성
+95,메간,영화,2023,75.5,"coupang, disney, watcha, wavve",40대,남성
+96,청설,영화,2024,87.8,"coupang, disney, watcha, wavve",40대,남성
+97,나미비아의 사막,영화,2024,84.4,"boxoffice, coupang, disney",40대,남성
+98,"그 시절, 우리가 좋아했던 소녀",영화,2025,35.5,"coupang, disney, watcha, wavve",40대,남성
+99,변호인,영화,2013,95.5,"coupang, disney",40대,남성
+100,그린 마일,영화,2000,96.2,"coupang, disney, wavve",40대,남성
+1,당신의 맛,드라마,2025,80.0,"coupang, disney, netflix",50대,남성
+5,언젠가는 슬기로울 전공의생활,드라마,2025,67.1,"coupang, disney, netflix, tving",50대,남성
+6,천국보다 아름다운,드라마,2025,64.0,"coupang, disney, netflix",50대,남성
+8,귀궁,드라마,2025,75.7,"coupang, disney, netflix, wavve",50대,남성
+12,약한영웅 Class 1,드라마,2022,95.3,"coupang, disney, netflix, wavve",50대,남성
+14,폭싹 속았수다,드라마,2025,97.0,"coupang, disney, netflix",50대,남성
+17,승부,영화,2025,94.7,"coupang, disney, netflix",50대,남성
+19,하트페어링,예능,2025,85.7,"coupang, disney, netflix, tving, wavve",50대,남성
+20,태어난 김에 세계일주4,예능,2025,83.3,"coupang, disney, netflix, wavve",50대,남성
+21,데블스 플랜,예능,2023,88.0,"coupang, disney, netflix",50대,남성
+22,슬기로운 의사생활 시즌 1,드라마,2020,95.5,"coupang, disney, netflix, tving",50대,남성
+23,임영웅│아임 히어로 더 스타디움,"영화, 공연",2024,26.9,"coupang, disney, netflix, watcha, wavve",50대,남성
+25,약한영웅 Class 2,드라마,2025,73.6,"coupang, disney, netflix",50대,남성
+26,진격의 거인 The Final Season 완결편 (전편),애니메이션,2023,98.4,"coupang, disney, netflix, tving, watcha, wavve",50대,남성
+28,슬기로운 의사생활 시즌 2,드라마,2021,89.4,"coupang, disney, netflix, tving",50대,남성
+34,데블스 플랜: 데스룸,예능,2025,95.2,"coupang, disney, netflix",50대,남성
+35,이혼숙려캠프,예능,2024,73.7,"coupang, disney, netflix, tving",50대,남성
+36,미션 임파서블: 데드 레코닝,영화,2023,95.4,"coupang, disney, netflix",50대,남성
+39,노트북,영화,2004,90.8,"coupang, disney, netflix, wavve",50대,남성
+44,레디 오어 낫,영화,2019,83.7,"coupang, disney, netflix",50대,남성
+52,더 글로리 파트 2,드라마,2023,96.9,"coupang, disney, netflix",50대,남성
+61,중증외상센터,드라마,2025,96.9,"coupang, disney, netflix",50대,남성
+67,태어난 김에 세계일주 3,예능,2023,92.6,"coupang, disney, netflix, wavve",50대,남성
+89,악마를 보았다,영화,2010,86.9,"coupang, disney, netflix, tving, watcha, wavve",50대,남성
+91,오징어 게임 시즌 2,드라마,2024,77.5,"coupang, disney, netflix",50대,남성
+92,높은 풀 속에서,영화,2019,42.7,"coupang, disney, netflix",50대,남성
+94,엑스테리토리얼,영화,2025,48.0,"coupang, disney, netflix",50대,남성
+37,신병 시즌 3,드라마,2025,95.9,"coupang, disney, tving",50대,남성
+43,바니와 오빠들,드라마,2025,60.0,"coupang, disney, tving, wavve",50대,남성
+55,지지고 볶는 여행,예능,2025,66.7,"coupang, disney, tving",50대,남성
+58,더 샌드,영화,2016,11.8,"coupang, disney, tving, watcha, wavve",50대,남성
+65,선재 업고 튀어,드라마,2024,93.0,"coupang, disney, tving",50대,남성
+73,뭉쳐야 찬다 4,예능,2025,20.0,"coupang, disney, tving",50대,남성
+75,"이재, 곧 죽습니다 part 2",드라마,2024,94.2,"coupang, disney, tving",50대,남성
+76,"이재, 곧 죽습니다 part 1",드라마,2023,93.7,"coupang, disney, tving",50대,남성
+81,언니네 산지직송2,예능,2025,28.6,"coupang, disney, tving",50대,남성
+86,샤크: 더 비기닝,영화,2021,58.5,"coupang, disney, tving",50대,남성
+3,야당,영화,2025,90.4,"boxoffice, coupang, disney",50대,남성
+4,파과,영화,2025,85.4,"boxoffice, coupang, disney",50대,남성
+7,알라딘,영화,2019,93.0,"coupang, disney",50대,남성
+10,미션 임파서블 : 고스트 프로토콜,영화,2011,98.2,"coupang, disney, wavve",50대,남성
+11,미션 임파서블,영화,1996,98.8,"coupang, disney, wavve",50대,남성
+13,거룩한 밤: 데몬 헌터스,영화,2025,17.9,"boxoffice, coupang, disney",50대,남성
+15,미션 임파서블: 파이널 레코닝,영화,2025,80.0,"boxoffice, coupang, disney",50대,남성
+18,썬더볼츠*,영화,2025,96.2,"boxoffice, coupang, disney",50대,남성
+27,A MINECRAFT MOVIE 마인크래프트 무비,영화,2025,63.8,"boxoffice, coupang, disney",50대,남성
+30,24시 헬스클럽,드라마,2025,66.7,"coupang, disney, watcha, wavve",50대,남성
+31,디어엠,드라마,2025,85.7,"coupang, disney, watcha, wavve",50대,남성
+32,바이러스,영화,2025,46.0,"boxoffice, coupang, disney",50대,남성
+33,해피엔드,영화,2024,97.3,"boxoffice, coupang, disney",50대,남성
+38,"미안하다, 사랑한다",드라마,2004,94.0,"coupang, disney, watcha, wavve",50대,남성
+40,서브스턴스,영화,2024,94.3,"coupang, disney, watcha, wavve",50대,남성
+41,태어난 김에 세계일주,예능,2022,95.1,"coupang, disney, wavve",50대,남성
+42,괴수 8호: 미션 리컨,"영화, 애니메이션",2025,80.0,"boxoffice, coupang, disney",50대,남성
+45,조명가게,드라마,2024,93.8,"coupang, disney",50대,남성
+46,범죄도시 2,영화,2022,93.3,"coupang, disney, wavve",50대,남성
+47,하이퍼나이프,드라마,2025,87.2,"coupang, disney",50대,남성
+48,콘클라베,영화,2024,98.5,"boxoffice, coupang, disney, watcha, wavve",50대,남성
+49,28주 후,영화,2007,88.1,"coupang, disney, wavve",50대,남성
+50,극장판 진격의 거인 완결편 더 라스트 어택,"영화, 애니메이션",2024,98.7,"boxoffice, coupang, disney",50대,남성
+51,로비,영화,2025,58.3,"coupang, disney, watcha, wavve",50대,남성
+53,독수리 5형제를 부탁해!,드라마,2025,87.5,"coupang, disney, wavve",50대,남성
+56,범죄도시,영화,2017,92.7,"coupang, disney, wavve",50대,남성
+57,나 혼자 산다,예능,2013,65.0,"coupang, disney, watcha, wavve",50대,남성
+59,플로리다 프로젝트,영화,2018,96.0,"boxoffice, coupang, disney",50대,남성
+60,최종병기 앨리스,드라마,2022,73.3,"coupang, disney, watcha",50대,남성
+62,범죄도시4,영화,2024,74.2,"coupang, disney, wavve",50대,남성
+64,드래곤 길들이기,"영화, 애니메이션",2010,97.1,"coupang, disney, watcha, wavve",50대,남성
+66,무빙,드라마,2023,95.9,"coupang, disney",50대,남성
+68,검은 수녀들,영화,2025,38.7,"coupang, disney",50대,남성
+70,미키 17,영화,2025,93.9,"coupang, disney, wavve",50대,남성
+71,히트맨2,영화,2025,51.5,"coupang, disney, wavve",50대,남성
+72,위드 러브,영화,2025,40.0,"boxoffice, coupang, disney",50대,남성
+74,마녀,영화,2018,82.7,"coupang, disney, wavve",50대,남성
+77,퇴마록,"영화, 애니메이션",2025,94.2,"coupang, disney, watcha, wavve",50대,남성
+78,백설공주,영화,2025,19.8,"coupang, disney",50대,남성
+79,히든 페이스,영화,2024,80.2,"coupang, disney",50대,남성
+82,원티드,영화,2008,93.7,"coupang, disney, watcha, wavve",50대,남성
+84,뉴토피아,드라마,2025,61.3,"coupang, disney",50대,남성
+85,전지적 참견 시점,예능,2018,59.4,"coupang, disney, watcha, wavve",50대,남성
+87,캡틴 아메리카: 브레이브 뉴 월드,영화,2025,79.1,"coupang, disney",50대,남성
+90,플로우,"영화, 애니메이션",2024,95.8,"coupang, disney, watcha, wavve",50대,남성
+93,SNL 코리아 시즌 7,예능,2016,85.7,"coupang, disney",50대,남성
+95,메간,영화,2023,75.5,"coupang, disney, watcha, wavve",50대,남성
+96,청설,영화,2024,87.8,"coupang, disney, watcha, wavve",50대,남성
+97,나미비아의 사막,영화,2024,84.4,"boxoffice, coupang, disney",50대,남성
+98,"그 시절, 우리가 좋아했던 소녀",영화,2025,35.5,"coupang, disney, watcha, wavve",50대,남성
+99,변호인,영화,2013,95.5,"coupang, disney",50대,남성
+100,그린 마일,영화,2000,96.2,"coupang, disney, wavve",50대,남성
