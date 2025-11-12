@@ -1,5 +1,5 @@
 # OTT 개인화 추천 시스템 (Personalized OTT Recommendation System)
-<img width="2530" height="900" alt="스크린샷 2025-11-10 205638" src="https://github.com/user-attachments/assets/8f9fda47-e7fa-447b-b6d0-a13c2c2315f4" />
+<img width="2300" height="1200" alt="스크린샷 2025-11-10 205638" src="https://github.com/user-attachments/assets/8f9fda47-e7fa-447b-b6d0-a13c2c2315f4" />
 
 > **사용자의 성별, 연령대, 선호 콘텐츠, 주 시청 시간, 예산**을 입력받아  
 > 어떤 **OTT 플랫폼**의 **요금제와 콘텐츠 조합이 가장 효율적인지** 추천하는 AI 기반 시스템입니다.
@@ -7,7 +7,7 @@
 ---
 
 ## 프로젝트 개요
-<img width="1307" height="1145" alt="스크린샷 2025-11-10 195214" src="https://github.com/user-attachments/assets/c0b0f7f4-5e25-454b-ac0c-ced8508948e0" />
+<img width="600" height="600" alt="스크린샷 2025-11-10 195214" src="https://github.com/user-attachments/assets/c0b0f7f4-5e25-454b-ac0c-ced8508948e0" />
 
 현대인은 다양한 OTT 서비스를 구독하지만,  
 “**나에게 가장 효율적인 플랫폼과 요금제는 무엇일까?**”에 대한 판단은 어렵습니다.  
